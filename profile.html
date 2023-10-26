@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <style>*{
+        margin: 0;
+        padding: 0;
+        font-family: 'poppins', sans-serif;
+        box-sizing: border-box;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        background: #080808;
+        color: #fff;
+    }
+    #header{
+        width: 100%;
+        height: 100vh;
+        background-image: url(https://www.pixelstalk.net/wp-content/uploads/images2/Dark-Wallpaper-Nature.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    .container{
+        padding: 10px 10%;
+    
+    }
+    
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .logo{
+        width: 300px;
+        
+    }
+    nav ul li{
+        display: inline-block;
+        list-style: none;
+        margin: 10px 20px;
+    }
+    nav ul li a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+    }
+    nav ul li a::after{
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #ff004f;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        transition: 0.5s;
+    }
+    nav ul li a:hover::after{
+        width: 100%;
+    
+    }
+    .header-text{
+        margin-top: 20%;
+        font-size: 30px;
+    }
+    .header-text h1{
+        font-size: 60px;
+        margin-top: 20px;
+    }
+    .header-text h1 span{
+        color: #ff004f;
+    }
+    /*-------------about--------------*/
+    #about{
+        padding: 80px 0;
+        color: #ababab;
+    
+    }
+    .row{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .about-col-1{
+        flex-basis: 35%;
+    }
+    .about-col-1 img{
+        width: 100%;
+        border-radius: 15px;
+    
+    }
+    .about-col-2{
+             flex-basis: 60%;    
+    }
+    .sub-title{
+        font-size: 60px;
+        font-weight: 600;
+        color: #fff;
+    }
+    .tab-titles{
+        display: flex;
+        margin: 20px 0 40px;
+    }
+    .tab-links{
+        margin-right: 50px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        position: relative;
+    }
+    .tab-links::after{
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #ff004f;
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        transition: 0.5s;
+    }
+    
+    .tab-links.active-link::after{
+        width: 50%;
+    }
+    
+    .tab-contents ul li{
+        list-style: none;
+        margin: 10px 0;
+    }
+    .tab-contents ul li span{
+        color: #b54769;
+        font-size: 14px;
+    }
+    .tab-contents{
+        display: none;
+    }
+    .tab-contents.active-tab{
+        display: block;
+    }
+    /*-----------------------services-------------------*/
+    
+    #services{
+        padding: 30px 0;
+    }
+    .services-list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 40px;
+        margin-top: 50px;
+    }
+    .services-list div{
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+    
+    }
+    .services-list div i{
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    .services-list div h2{
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+    .services-list div a{
+        text-decoration: none;
+        color: #fff;
+        font-size: 12px;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    .services-list div:hover{
+        background: #ff004f;
+        transform: translateY(-10px);
+    }
+    
+    /*---------------------portfolio-------------------*/
+    #portfolio{
+        padding: 50px 0;
+    }
+    .work-list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 40px;
+        margin-top: 50px;
+    }
+    .work{
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+    }
+    .work img{
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+        transition: transform 0.5s;
+    }
+    .layer{
+        width: 100%;
+        height: 0;
+        background: linear-gradient(rgba(0,0,0,0.6),#ff004f);
+        border-radius: 10px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 40px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .layer h3{
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .layer a{
+        margin-top: 20px;
+        color: #ff004f;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 60px;
+        background: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        transition: height 0.5s;
+    }
+    .work:hover img{
+        transform: scale(1.1);
+    }
+    .work:hover .layer{
+        height: 100%;
+    }
+    .btn{
+        display: block;
+        margin: 50px auto;
+        width: fit-content;
+        border: 1px solid #ff004f;
+        padding: 14px 50px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        transition: background 0.5s;
+    }
+    .btn:hover{
+        background: #ff004f;
+    }
+    /*------------------------contact---------------*/
+    .contact-left{
+        flex-basis: 35%;
+    }
+    .contact-right{
+        flex-basis: 60%;
+    }
+    .contact-left p{
+        margin-top: 30px;
+    }
+    .contact-left p i{
+        color: #ff004f;
+        margin-right: 15px;
+        font-size: 25px;
+    }
+    .social-icons{
+        margin-top: 30px;
+    }
+    .social-icons a{
+        text-decoration: none;
+        font-size: 30px;
+        margin-right: 15px;
+        color: #ababab;
+        display: inline-block;
+        transition: transform 0.5s;
+    }
+    .social-icons a:hover{
+        color: #ff004f;
+        transform: translateY(-5px);
+    
+    }
+    .btn.btn2{
+        display: inline-block;
+        background: #ff004f;
+    }
+    .contact-right form{
+        width: 100%;
+    }
+    form input, form textarea{
+        width: 100%;
+        border: 0;
+        outline: none;
+        background: #262626;
+        padding: 15px;
+        margin: 15px 0;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 6px;
+    }
+    form .btn2{
+        padding: 14px 60px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    .copiright{
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background: #262626;
+        font-weight: 300;
+        margin-top: 20px;
+    }
+    .copiright i{
+        color: #ff004f;
+    }
+    /*------------------------css for small screen--------------------*/
+    nav .fa{
+        display: none;
+    }
+    @media only screen and (max-width: 600px){
+        #header{
+            background-image: url(images/phone-background.png);
+        }
+        .header-text{
+            margin-top: 100%;
+            font-size: 16px;
+        }
+        .header-text h1{
+            font-size: 30px;
+        }
+        nav .fa{
+            display: block;
+            font-size: 25px;
+        }
+        nav ul{
+            background: #ff004f;
+            position: fixed;
+            top: 0;
+            right: -200px;
+            width: 200px;
+            height: 100vh;
+            padding-top: 50px;
+            z-index: 2;
+            transition: right 0.5s;
+        }
+        nav ul li{
+            display: block;
+            margin: 25px;
+        }
+        nav ul .fa{
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            cursor: pointer;
+    
+        }
+        .sub-title{
+            font-size: 40px;
+        }
+        .about-col-1, .about-col-2{
+            flex-basis: 100%;
+        }
+        .about-col-1{
+            margin-bottom: 30px;
+        }
+        .about-col-2{
+            font-size: 14px;
+        }
+        .tab-links{
+            font-size: 16px;
+            margin-right: 20px;
+        }
+        .contact-left, .contact-right{
+            flex-basis: 100%;
+        }
+        .copiright{
+            font-size: 40px;
+        }
+    }
+    #msg{
+        color: #61b752;
+        margin-top: -40px;
+        display: block;
+    }</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="cat.jpg" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>UI/UX Designer</p>
+                <h1>Hi, I'm <span>Bhuvaneswaran</span><br>From Villupuram</h1>
+            </div>
+        </div>
+    </div>
+    <!-------------------------about--------------------->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Bhuvaneswaran.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I'm Bhuvaneswaran, a computer science student  with a passion for technology and problem-solving. I love to code, explore new programming languages, and develop innovative solutions. In my free time, I enjoy hiking, reading science fiction, and experimenting with cooking. Feel free to ask me anything tech-related or share your interests!</p>
+                    
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('Experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('Education')">Education</p>
+                     </div> 
+                     <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX</span><br>Designing web/App interfaces</li>
+                            <li><span>Web Development</span><br>Web app Development</li>
+                            <li><span>App Development</span><br>Building Android/ios apps</li>
+                        </ul>
+                     </div>
+                     <div class="tab-contents" id="Experience">
+                        <ul>
+                            <li><span>2021 - Current</span><br>UI/UX Design Training at ET Institute</li>
+                            <li><span>2019 - 2021</span><br>Web app Development</li>
+                            <li><span>2017 - 2019</span><br>Internship at ekart eCommerce.</li>
+                        </ul>
+                     </div>
+                     <div class="tab-contents" id="Education">
+                        <ul>
+                            <li><span>2017</span><br>UI/UX Design Training at ET Institute</li>
+                            <li><span>2017</span><br>MBA from NIT Chennai</li>
+                            <li><span>2016</span><br>Bsc Computer science from Annamalai University Cuddalore</li>
+                        </ul>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!----------------------services-------------------->
+
+<div id="services">
+    <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa fa-code" aria-hidden="true"></i>
+                <h2>Web Design</h2>
+                <p>
+                    Web designing is the process of planning, conceptualizing, and implementing the plan for designing a website in a way that is functional and offers a good user experience. User experience is central to the web designing process. Websites have an array of elements presented in ways that make them easy to navigate.
+                </p>
+                <a href="#">Learn more</a>
+            </div>
+            <div>
+                <i class="fa fa-crop" aria-hidden="true"></i>
+                <h2>UI/UX Design</h2>
+                <p>
+                    Web designing is the process of planning, conceptualizing, and implementing the plan for designing a website in a way that is functional and offers a good user experience. User experience is central to the web designing process. Websites have an array of elements presented in ways that make them easy to navigate.
+                </p>
+                <a href="#">Learn more</a>
+            </div>
+            <div>
+                <i class="fa fa-desktop" aria-hidden="true"></i>
+                <h2>App Design</h2>
+                <p>
+                    Web designing is the process of planning, conceptualizing, and implementing the plan for designing a website in a way that is functional and offers a good user experience. User experience is central to the web designing process. Websites have an array of elements presented in ways that make them easy to navigate.
+                </p>
+                <a href="#">Learn more</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!------------------------portfolio-------------------->
+   <div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">My Work</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="https://th.bing.com/th/id/OIP.s0di0T2Im6UlsWGC_3zYjQHaHa?w=200&h=200&c=7&r=0&o=5&pid=1.7">
+                <div class="layer">
+                    <h3>Social Media App</h3>
+                    <p>The app connectes you to the talented peple around the world.
+                        Download it from play store.
+                    </p>
+                    <a href="#"><i class="fa fa-tablet" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="data:image/jpeg;base64,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">
+                <div class="layer">
+                    <h3>Music App</h3>
+                    <p>The app connectes you to the talented peple around the world.
+                        Download it from play store.
+                    </p>
+                    <a href="#"><i class="fa fa-music" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="data:image/jpeg;base64,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">
+                <div class="layer">
+                    <h3>Online Shopping App</h3>
+                    <p>The app connectes you to the talented peple around the world.
+                        Download it from play store.
+                    </p>
+                    <a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#"class="btn">See More</a>
+    </div>
+   </div>
+   <!-----------------------------contact-------------------->
+   <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa fa-paper-plane" aria-hidden="true"></i>contact@example.com</p>
+                <p><i class="fa fa-mobile" aria-hidden="true"></i>0123456789</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <a href="Resume_2023-10-26_3332896.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copiright">
+        <p>Copyright © Bhuvaneswaran.2023 <i class="fa fa-heart" aria-hidden="true"></i> All Rights Reserved</p>
+    </div>
+   </div>
+
+
+
+   <script>
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+         function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab")
+         }
+    </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px"
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyUEd4FpCb7rZqegrpbEDd-Xt_PhZs_ywee9_5JMRu8X3IBJ6VR_Rpbqv_PNj1Py-bbyA/exec'
+        const form = document.forms['submit-to-google-sheet']
+      const msd = document.getElementById("msg")
+
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent sucessfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form,reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
